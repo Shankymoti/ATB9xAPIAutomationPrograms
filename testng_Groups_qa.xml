@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true"
+          name="run QA TC">
+        <groups>
+            <run>
+                <include name="qa" />
+            </run>
+        </groups>
+        <classes>
+            <class name="shashankkumar.com.ex04_TestNg.APITesting016_Groups"/>
+        </classes>
+    </test>
+</suite>
