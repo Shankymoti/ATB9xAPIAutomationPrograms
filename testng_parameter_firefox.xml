@@ -5,7 +5,7 @@
           name="TC for firefox">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="shashankkumar.com.ex04_TestNg.APITesting018_Parameter"/>
+            <class name="shashankkumar.com.ex03_TestNg.APITesting018_Parameter"/>
         </classes>
     </test>
 </suite>

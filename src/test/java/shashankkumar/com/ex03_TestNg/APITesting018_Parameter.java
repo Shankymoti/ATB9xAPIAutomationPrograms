@@ -1,4 +1,4 @@
-package shashankkumar.com.ex04_TestNg;
+package shashankkumar.com.ex03_TestNg;
 
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;

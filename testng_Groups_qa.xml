@@ -9,7 +9,7 @@
             </run>
         </groups>
         <classes>
-            <class name="shashankkumar.com.ex04_TestNg.APITesting016_Groups"/>
+            <class name="shashankkumar.com.ex03_TestNg.APITesting016_Groups"/>
         </classes>
     </test>
 </suite>
