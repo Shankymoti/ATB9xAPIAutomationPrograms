@@ -1,3 +1,4 @@
+
 package shashankkumar.com.ex05_payload_management;
 
 import io.restassured.RestAssured;
@@ -24,7 +25,7 @@ public class APITesting026_RestAssured_Payload_POJO {
     Integer bookingId;
 
 
-   @Test
+    @Test
     public void test_MapPayload() {
 
 //        String payloadPOST = "{\n" +
@@ -63,72 +64,72 @@ public class APITesting026_RestAssured_Payload_POJO {
 
       */
 
-       // POJO
+        // POJO
 
-       Booking booking = new Booking();
-       booking.setFirstname("Shashank");
-       booking.setLastname("Singh");
-       booking.setTotalprice(1234);
-       booking.setDepositpaid(true);
+        Booking booking = new Booking();
+        booking.setFirstname("Shashank");
+        booking.setLastname("Singh");
+        booking.setTotalprice(1234);
+        booking.setDepositpaid(true);
 
-       BookingDates bookingDates =  new BookingDates();
-       bookingDates.setCheckin("2024-01-01");
-       bookingDates.setCheckout("2024-01-01");
+        BookingDates bookingDates =  new BookingDates();
+        bookingDates.setCheckin("2024-01-01");
+        bookingDates.setCheckout("2024-01-01");
 
-       booking.setBookingdates(bookingDates);
+        booking.setBookingdates(bookingDates);
 
-       booking.setAdditionalneeds("Breakfast");
-
-
+        booking.setAdditionalneeds("Breakfast");
 
 
 
 
 
 
-       requestSpecification = RestAssured.given().log().all();
-                                requestSpecification.baseUri("https://restful-booker.herokuapp.com");
-                                requestSpecification.basePath("/booking");
-                                requestSpecification.contentType(ContentType.JSON);
-                                requestSpecification.body(booking);
+
+
+        requestSpecification = RestAssured.given().log().all();
+        requestSpecification.baseUri("https://restful-booker.herokuapp.com");
+        requestSpecification.basePath("/booking");
+        requestSpecification.contentType(ContentType.JSON);
+        requestSpecification.body(booking);
         response = requestSpecification.when().log().all().post();
 
         validatableResponse = response.then().log().all();
-                              validatableResponse.statusCode(200);
+        validatableResponse.statusCode(200);
 
         // Rest Assured -> import org.hamcrest.Matchers;
         // Matchers.equalto()
-                              validatableResponse.body("bookingid", Matchers.notNullValue());
-                              validatableResponse.body("booking.firstname",Matchers.equalTo("Shashank"));
-                              validatableResponse.body("booking.lastname",Matchers.equalTo("Singh"));
-                              validatableResponse.body("booking.bookingdates.checkin",Matchers.equalTo("2024-01-01"));
-                              validatableResponse.body("booking.additionalneeds", Matchers.equalTo("Breakfast"));
+        validatableResponse.body("bookingid", Matchers.notNullValue());
+        validatableResponse.body("booking.firstname",Matchers.equalTo("Shashank"));
+        validatableResponse.body("booking.lastname",Matchers.equalTo("Singh"));
+        validatableResponse.body("booking.bookingdates.checkin",Matchers.equalTo("2024-01-01"));
+        validatableResponse.body("booking.additionalneeds", Matchers.equalTo("Breakfast"));
 
-       // TestNG Assertions  -
+        // TestNG Assertions  -
 
-       // SoftAssert vs
-       // HardAssert -
-       // This means that if any assertion fails,
-       // the remaining statements in that test method will not be executed.
+        // SoftAssert vs
+        // HardAssert -
+        // This means that if any assertion fails,
+        // the remaining statements in that test method will not be executed.
 
-       // Use these path Testng and AssertJ
-       bookingId = response.then().extract().path("bookingid");
-       String firstName = response.then().extract().path("booking.firstname");
-       String lastName = response.then().extract().path("booking.lastname");
-       String checkIn = response.then().extract().path("booking.bookingdates.checkin");
+        // Use these path Testng and AssertJ
+        bookingId = response.then().extract().path("bookingid");
+        String firstName = response.then().extract().path("booking.firstname");
+        String lastName = response.then().extract().path("booking.lastname");
+        String checkIn = response.then().extract().path("booking.bookingdates.checkin");
 
-    //TestNG Assertion
+        //TestNG Assertion
 
-       Assert.assertNotNull(bookingId);
-       Assert.assertEquals(firstName, "Shashank");
-       Assert.assertNotEquals(lastName,"Kumar");
-       Assert.assertEquals(checkIn, "2024-01-01");
+        Assert.assertNotNull(bookingId);
+        Assert.assertEquals(firstName, "Shashank");
+        Assert.assertNotEquals(lastName,"Kumar");
+        Assert.assertEquals(checkIn, "2024-01-01");
 
-       //AssertJ  Assertion ( 3rd- Lib to Assertions)
+        //AssertJ  Assertion ( 3rd- Lib to Assertions)
 
-       assertThat(bookingId).isPositive().isNotNegative().isNotNull();
-       assertThat(firstName).isEqualTo("Shashank").isAlphanumeric().isNotNull().isNotBlank().isNotEmpty();
+        assertThat(bookingId).isPositive().isNotNegative().isNotNull();
+        assertThat(firstName).isEqualTo("Shashank").isAlphanumeric().isNotNull().isNotBlank().isNotEmpty();
 
-   }
+    }
 
 }
